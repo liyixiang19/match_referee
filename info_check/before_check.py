@@ -9,7 +9,8 @@ class BeforeCheck(object):
 
     def info_input_check(self):
         # 队伍信息录入
-        if self.ui.comboBox_id.
+        # if self.ui.comboBox_id.
+        pass
 
     def match_before_check(self):
         # 赛前检查流程
