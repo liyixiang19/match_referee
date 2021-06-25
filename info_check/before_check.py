@@ -9,8 +9,16 @@ class BeforeCheck(object):
 
     def info_input_check(self):
         # 队伍信息录入
-        # if self.ui.comboBox_id.
-        pass
+        if 0 == self.ui.comboBox_id.currentText():
+            print("请选择队伍序号")
+            return 0
+        if "" == self.ui.lineEdit_name.text():
+            print("请输入参赛队伍名称")
+            return 0
+        if "无" == self.ui.comboBox_country.currentText():
+            print("请选择参赛队伍国籍！")
+            return 0
+        return 1
 
     def match_before_check(self):
         # 赛前检查流程
@@ -54,6 +62,12 @@ class BeforeCheck(object):
             print("队伍准备就绪！")
         else:
             print("请裁判员确认队伍准备情况")
+            return 0
+
+        if "" != self.ui.lineEdit_referee_name.text():
+            print("裁判员姓名确认！")
+        else:
+            print("请裁判员输入姓名")
             return 0
 
         print("裁判员完成赛前检查")
