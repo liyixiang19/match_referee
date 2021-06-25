@@ -64,7 +64,7 @@ class MainWindow(QMainWindow):
     @pyqtSlot()
     def on_Button_random_image1_clicked(self):
         random_num = random.randint(0, 9)
-        self.random_image_path = os.path.abspath('..') + "\\picture\\" + str(random_num) + ".jpg"
+        self.random_image_path = os.path.abspath('.') + "\\picture\\" + str(random_num) + ".jpg"
         print("随机生成方案图片路径： " + self.random_image_path)
         self.main_ui.lineEdit_image_path1.setText(self.random_image_path)
 
