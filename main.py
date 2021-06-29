@@ -17,12 +17,13 @@ class MainWindow(QMainWindow):
         self.timer.timeout.connect(self.clock)
         self.main_ui = match_control.Ui_match_control()
         self.main_ui.setupUi(self)
+        # 初始值
         self.random_image_path = ""
         self.repair_times = 2
         self.remain_hit_times = 5
         self.time_use = 0
-        self.time_default = 300
-        self.counter = 300
+        self.time_default = 60
+        self.counter = 60
         self.score = 0
         self.recoder = {}
         self.status = ""
