@@ -1,5 +1,9 @@
+import time
+
+from PyQt5.QtWidgets import QMessageBox
 from xlsxwriter import Workbook
 import xlwt
+from excel_generate import switch_excel
 
 
 class SaveExcel(object):
@@ -7,7 +11,8 @@ class SaveExcel(object):
         pass
 
     def get_excel(self, recoder_dict, column_name):
-        wb = Workbook("result.xlsx")
+        now = time.strftime("%Y%m%d-%H%M%S", time.localtime())
+        wb = Workbook("result_" + now + ".xlsx")
         ws = wb.add_worksheet("New Sheet")  # or leave it blank, default name is "Sheet 1"
 
         ws.set_column("A:X", 13)  # 设置列宽度
@@ -38,7 +43,7 @@ class SaveExcel(object):
 
 
 if __name__ == '__main__':
-    li = SaveExcel()
+    li = switch_excel.SaveExcel()
     map1 = {"1": {'name': '123', 'nation': '中国（China）', 'number': '5', 'referee_name': '231', '1_status': 'success_in',
                   '1_time_use': '3', '1_image_path': 'D:\\Projects\\picture\\4.jpg', '1_repair': 'no',
                   '2_repair': 'yes',
@@ -48,9 +53,13 @@ if __name__ == '__main__':
                       'no', '4_status': 'out_area', '4_time_use': '5', '4_image_path': 'D:\\Projects\\picture\\0.jpg',
                   '4_repair': 'no', '5_status': 'touch_ball', '5_time_use': '4', '5_image_path':
                       'D:\\Projects\\picture\\0.jpg', '5_repair': 'no'}}
+
     column_list = ["name", "nation", "number", "referee_name", "1_status", "1_time_use", "1_image_path", "1_repair",
                    "2_status", "2_time_use", "2_image_path", "2_repair",
                    "3_status", "3_time_use", "3_image_path", "3_repair",
                    "4_status", "4_time_use", "4_image_path", "4_repair",
                    "5_status", "5_time_use", "5_image_path", "5_repair"]
+
     li.get_excel(map1, column_list)
+    print("信息已保存！")
+

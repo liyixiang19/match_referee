@@ -1,3 +1,6 @@
+import os
+import time
+
 from xlsxwriter import Workbook
 
 
@@ -6,7 +9,10 @@ class SaveExcel(object):
         pass
 
     def get_excel(self, recoder_dict, column_name):
-        wb = Workbook("result.xlsx")
+        now = time.strftime("%Y%m%d_%H%M%S", time.localtime())
+        path = os.path.abspath('.')
+        print(path)
+        wb = Workbook(path + "\\excel_result\\result_" + now + ".xlsx")
         ws = wb.add_worksheet("New Sheet")  # or leave it blank, default name is "Sheet 1"
 
         ws.set_column("A:X", 13)  # 设置列宽度

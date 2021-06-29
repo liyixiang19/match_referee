@@ -444,24 +444,11 @@
        <height>301</height>
       </rect>
      </property>
-     <widget class="QToolButton" name="Button_compute_points1">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>50</y>
-        <width>131</width>
-        <height>71</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>计分</string>
-      </property>
-     </widget>
      <widget class="QToolButton" name="Button_save1">
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>160</y>
+        <y>100</y>
         <width>131</width>
         <height>71</height>
        </rect>
@@ -476,6 +463,29 @@
     <attribute name="title">
      <string>顺序击球</string>
     </attribute>
+    <widget class="QWidget" name="widget_result_2" native="true">
+     <property name="geometry">
+      <rect>
+       <x>800</x>
+       <y>500</y>
+       <width>151</width>
+       <height>301</height>
+      </rect>
+     </property>
+     <widget class="QToolButton" name="Button_save2">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>110</y>
+        <width>131</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>导出比赛结果</string>
+      </property>
+     </widget>
+    </widget>
     <widget class="QGroupBox" name="groupBox_3">
      <property name="enabled">
       <bool>true</bool>
@@ -507,20 +517,20 @@
      <widget class="QLabel" name="label_status2">
       <property name="geometry">
        <rect>
-        <x>240</x>
-        <y>30</y>
-        <width>151</width>
-        <height>21</height>
+        <x>10</x>
+        <y>60</y>
+        <width>91</width>
+        <height>31</height>
        </rect>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;状态提示&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;图片路径&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
      <widget class="QPushButton" name="Button_open_image2">
       <property name="geometry">
        <rect>
-        <x>140</x>
+        <x>150</x>
         <y>30</y>
         <width>101</width>
         <height>20</height>
@@ -536,14 +546,37 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>70</x>
-        <y>70</y>
-        <width>300</width>
-        <height>300</height>
+        <x>20</x>
+        <y>139</y>
+        <width>411</width>
+        <height>261</height>
        </rect>
       </property>
       <property name="text">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;显示选择的图片&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Button_projection2">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>30</y>
+        <width>61</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>投影</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_image_path2">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>60</y>
+        <width>231</width>
+        <height>25</height>
+       </rect>
       </property>
      </widget>
     </widget>
@@ -563,42 +596,55 @@
       <property name="geometry">
        <rect>
         <x>40</x>
-        <y>100</y>
+        <y>50</y>
         <width>121</width>
-        <height>41</height>
+        <height>51</height>
        </rect>
       </property>
       <property name="text">
-       <string>剩余击球次数：5</string>
+       <string>剩余击球次数：</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_successin2">
       <property name="geometry">
        <rect>
         <x>40</x>
-        <y>150</y>
-        <width>71</width>
+        <y>100</y>
+        <width>151</width>
         <height>31</height>
        </rect>
       </property>
       <property name="text">
-       <string>最后进袋球:</string>
+       <string>目标球成功入袋：</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_successtouch2">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>150</y>
+        <width>151</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>碰目标球未入袋：</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_repairtimes2">
       <property name="geometry">
        <rect>
-        <x>40</x>
+        <x>210</x>
         <y>50</y>
-        <width>121</width>
-        <height>31</height>
+        <width>151</width>
+        <height>51</height>
        </rect>
       </property>
       <property name="text">
-       <string>比赛剩余维修次数：1</string>
+       <string>比赛剩余维修次数：</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_outarea2">
+     <widget class="QLabel" name="label_balloutarea2">
       <property name="geometry">
        <rect>
         <x>40</x>
@@ -616,7 +662,7 @@
        <rect>
         <x>40</x>
         <y>250</y>
-        <width>81</width>
+        <width>151</width>
         <height>31</height>
        </rect>
       </property>
@@ -629,7 +675,7 @@
        <rect>
         <x>40</x>
         <y>300</y>
-        <width>81</width>
+        <width>151</width>
         <height>31</height>
        </rect>
       </property>
@@ -637,50 +683,25 @@
        <string>触碰违例：</string>
       </property>
      </widget>
-     <widget class="QComboBox" name="comboBox_ballinid2">
+     <widget class="QSpinBox" name="spinBox_ballsuccessin2">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>100</y>
+        <width>42</width>
+        <height>22</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="spinBox_touchout2">
       <property name="geometry">
        <rect>
         <x>200</x>
         <y>150</y>
-        <width>91</width>
+        <width>42</width>
         <height>22</height>
        </rect>
       </property>
-      <item>
-       <property name="text">
-        <string>无</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>1号球</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>2号球</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>3号球</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>4号球</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>5号球</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>6号球</string>
-       </property>
-      </item>
      </widget>
      <widget class="QSpinBox" name="spinBox_outarea2">
       <property name="geometry">
@@ -715,14 +736,71 @@
      <widget class="QLabel" name="label_totalpoints2">
       <property name="geometry">
        <rect>
-        <x>180</x>
-        <y>380</y>
-        <width>141</width>
-        <height>61</height>
+        <x>40</x>
+        <y>370</y>
+        <width>41</width>
+        <height>21</height>
        </rect>
       </property>
       <property name="text">
        <string>分数：</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_remain_times2">
+      <property name="geometry">
+       <rect>
+        <x>160</x>
+        <y>50</y>
+        <width>41</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>微软雅黑</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>5</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_remain_repair_times2">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>50</y>
+        <width>41</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>微软雅黑</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>2</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_score2">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>360</y>
+        <width>91</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>微软雅黑</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string/>
       </property>
      </widget>
     </widget>
@@ -731,11 +809,11 @@
       <rect>
        <x>25</x>
        <y>500</y>
-       <width>950</width>
+       <width>751</width>
        <height>300</height>
       </rect>
      </property>
-     <widget class="QToolButton" name="Button_matchstart12">
+     <widget class="QToolButton" name="Button_match_start2">
       <property name="geometry">
        <rect>
         <x>400</x>
@@ -748,7 +826,7 @@
        <string>开始</string>
       </property>
      </widget>
-     <widget class="QToolButton" name="Button_devicerepair2">
+     <widget class="QToolButton" name="Button_device_repair2">
       <property name="geometry">
        <rect>
         <x>400</x>
@@ -761,32 +839,6 @@
        <string>维修</string>
       </property>
      </widget>
-     <widget class="QToolButton" name="Button_matchstop2">
-      <property name="geometry">
-       <rect>
-        <x>600</x>
-        <y>50</y>
-        <width>131</width>
-        <height>71</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>结束</string>
-      </property>
-     </widget>
-     <widget class="QToolButton" name="Button_computepoints2">
-      <property name="geometry">
-       <rect>
-        <x>600</x>
-        <y>160</y>
-        <width>131</width>
-        <height>71</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>计分</string>
-      </property>
-     </widget>
      <widget class="QLCDNumber" name="lcdNumber2">
       <property name="geometry">
        <rect>
@@ -796,18 +848,47 @@
         <height>250</height>
        </rect>
       </property>
+      <property name="intValue" stdset="0">
+       <number>60</number>
+      </property>
      </widget>
-     <widget class="QToolButton" name="Button_savepoints2">
+     <widget class="QToolButton" name="Button_match_stop2">
       <property name="geometry">
        <rect>
-        <x>800</x>
+        <x>600</x>
+        <y>50</y>
+        <width>131</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>停止</string>
+      </property>
+     </widget>
+     <widget class="QToolButton" name="Button_match_once_stop2">
+      <property name="geometry">
+       <rect>
+        <x>600</x>
         <y>160</y>
         <width>131</width>
         <height>71</height>
        </rect>
       </property>
       <property name="text">
-       <string>保存</string>
+       <string>单次击球结束</string>
+      </property>
+     </widget>
+     <widget class="QLCDNumber" name="lcdNumber_repair_timer2">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>242</y>
+        <width>131</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="intValue" stdset="0">
+       <number>300</number>
       </property>
      </widget>
     </widget>
@@ -816,74 +897,114 @@
     <attribute name="title">
      <string>动态击球</string>
     </attribute>
-    <widget class="QGroupBox" name="groupBox_5">
-     <property name="enabled">
-      <bool>true</bool>
-     </property>
+    <widget class="QWidget" name="widget_result_3" native="true">
      <property name="geometry">
       <rect>
-       <x>25</x>
-       <y>20</y>
-       <width>450</width>
-       <height>450</height>
+       <x>800</x>
+       <y>500</y>
+       <width>151</width>
+       <height>301</height>
       </rect>
      </property>
-     <property name="title">
-      <string>随机生成比赛置球方案</string>
-     </property>
-     <widget class="QPushButton" name="Button_random_image3">
+     <widget class="QToolButton" name="Button_save3">
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>30</y>
-        <width>111</width>
-        <height>20</height>
+        <y>110</y>
+        <width>131</width>
+        <height>71</height>
        </rect>
       </property>
       <property name="text">
-       <string>随机生成图片路径</string>
+       <string>导出比赛结果</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_status3">
+    </widget>
+    <widget class="QWidget" name="widget_3" native="true">
+     <property name="geometry">
+      <rect>
+       <x>25</x>
+       <y>500</y>
+       <width>751</width>
+       <height>300</height>
+      </rect>
+     </property>
+     <widget class="QToolButton" name="Button_match_start3">
       <property name="geometry">
        <rect>
-        <x>240</x>
-        <y>30</y>
-        <width>151</width>
-        <height>21</height>
+        <x>400</x>
+        <y>50</y>
+        <width>131</width>
+        <height>71</height>
        </rect>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;状态提示&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>开始</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="Button_open_image3">
+     <widget class="QToolButton" name="Button_device_repair3">
       <property name="geometry">
        <rect>
-        <x>140</x>
-        <y>30</y>
-        <width>101</width>
-        <height>20</height>
+        <x>400</x>
+        <y>160</y>
+        <width>131</width>
+        <height>71</height>
        </rect>
       </property>
       <property name="text">
-       <string>打开置球方案图</string>
+       <string>维修</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_show_image3">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
+     <widget class="QLCDNumber" name="lcdNumber3">
       <property name="geometry">
        <rect>
-        <x>80</x>
-        <y>80</y>
-        <width>300</width>
-        <height>300</height>
+        <x>30</x>
+        <y>30</y>
+        <width>250</width>
+        <height>250</height>
+       </rect>
+      </property>
+      <property name="intValue" stdset="0">
+       <number>60</number>
+      </property>
+     </widget>
+     <widget class="QToolButton" name="Button_match_stop3">
+      <property name="geometry">
+       <rect>
+        <x>600</x>
+        <y>50</y>
+        <width>131</width>
+        <height>71</height>
        </rect>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;显示选择的图片&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>停止</string>
+      </property>
+     </widget>
+     <widget class="QToolButton" name="Button_match_once_stop3">
+      <property name="geometry">
+       <rect>
+        <x>600</x>
+        <y>160</y>
+        <width>131</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>单次击球结束</string>
+      </property>
+     </widget>
+     <widget class="QLCDNumber" name="lcdNumber_repair_timer3">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>242</y>
+        <width>131</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="intValue" stdset="0">
+       <number>300</number>
       </property>
      </widget>
     </widget>
@@ -909,7 +1030,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>剩余击球次数：5</string>
+       <string>剩余击球次数：</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_successin3">
@@ -941,14 +1062,14 @@
      <widget class="QLabel" name="label_repairtimes3">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>210</x>
         <y>50</y>
-        <width>121</width>
+        <width>151</width>
         <height>51</height>
        </rect>
       </property>
       <property name="text">
-       <string>比赛剩余维修次数：1</string>
+       <string>比赛剩余维修次数：</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_balloutarea3">
@@ -1043,99 +1164,165 @@
      <widget class="QLabel" name="label_totalpoints3">
       <property name="geometry">
        <rect>
-        <x>190</x>
+        <x>40</x>
         <y>370</y>
-        <width>141</width>
-        <height>61</height>
+        <width>41</width>
+        <height>21</height>
        </rect>
       </property>
       <property name="text">
        <string>分数：</string>
       </property>
      </widget>
+     <widget class="QLineEdit" name="lineEdit_remain_times3">
+      <property name="geometry">
+       <rect>
+        <x>160</x>
+        <y>50</y>
+        <width>41</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>微软雅黑</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>5</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_remain_repair_times3">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>50</y>
+        <width>41</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>微软雅黑</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>2</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_score3">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>360</y>
+        <width>91</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>微软雅黑</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
     </widget>
-    <widget class="QWidget" name="widget_3" native="true">
+    <widget class="QGroupBox" name="groupBox_5">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>25</x>
-       <y>500</y>
-       <width>950</width>
-       <height>300</height>
+       <y>20</y>
+       <width>450</width>
+       <height>450</height>
       </rect>
      </property>
-     <widget class="QToolButton" name="Button_matchstart3">
+     <property name="title">
+      <string>随机生成比赛置球方案</string>
+     </property>
+     <widget class="QPushButton" name="Button_random_image3">
       <property name="geometry">
        <rect>
-        <x>400</x>
-        <y>50</y>
-        <width>131</width>
-        <height>71</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>开始</string>
-      </property>
-     </widget>
-     <widget class="QToolButton" name="Button_devicerepair3">
-      <property name="geometry">
-       <rect>
-        <x>400</x>
-        <y>160</y>
-        <width>131</width>
-        <height>71</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>维修</string>
-      </property>
-     </widget>
-     <widget class="QLCDNumber" name="lcdNumber1_2">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
+        <x>10</x>
         <y>30</y>
-        <width>250</width>
-        <height>250</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QToolButton" name="Button_matchstop3">
-      <property name="geometry">
-       <rect>
-        <x>600</x>
-        <y>50</y>
-        <width>131</width>
-        <height>71</height>
+        <width>111</width>
+        <height>20</height>
        </rect>
       </property>
       <property name="text">
-       <string>结束</string>
+       <string>随机生成图片路径</string>
       </property>
      </widget>
-     <widget class="QToolButton" name="Button_computepoints3">
+     <widget class="QLabel" name="label_status3">
       <property name="geometry">
        <rect>
-        <x>600</x>
-        <y>160</y>
-        <width>131</width>
-        <height>71</height>
+        <x>10</x>
+        <y>60</y>
+        <width>91</width>
+        <height>31</height>
        </rect>
       </property>
       <property name="text">
-       <string>计分</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;图片路径&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-     <widget class="QToolButton" name="Button_savepoints3">
+     <widget class="QPushButton" name="Button_open_image3">
       <property name="geometry">
        <rect>
-        <x>800</x>
-        <y>160</y>
-        <width>131</width>
-        <height>71</height>
+        <x>150</x>
+        <y>30</y>
+        <width>101</width>
+        <height>20</height>
        </rect>
       </property>
       <property name="text">
-       <string>保存</string>
+       <string>打开置球方案图</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_show_image3">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>139</y>
+        <width>411</width>
+        <height>261</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;显示选择的图片&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Button_projection3">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>30</y>
+        <width>61</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>投影</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_image_path3">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>60</y>
+        <width>231</width>
+        <height>25</height>
+       </rect>
       </property>
      </widget>
     </widget>
