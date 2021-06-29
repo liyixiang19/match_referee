@@ -168,7 +168,7 @@
        </rect>
       </property>
       <property name="intValue" stdset="0">
-       <number>300</number>
+       <number>60</number>
       </property>
      </widget>
      <widget class="QToolButton" name="Button_match_stop1">

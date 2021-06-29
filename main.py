@@ -4,7 +4,7 @@ import sys
 from PyQt5 import QtGui
 from PyQt5.QtCore import pyqtSlot, QTimer
 from PyQt5.QtGui import QPainter
-from PyQt5.QtWidgets import QApplication, QDialog, QMessageBox, QMainWindow, QFileDialog
+from PyQt5.QtWidgets import QApplication, QDialog, QMessageBox, QMainWindow
 from ui import match_control, image_projection
 from info_check import before_check
 from excel_save import switch_excel
@@ -29,27 +29,28 @@ class MainWindow(QMainWindow):
         self.status = ""
         # 定义赛前检查标志位
         self.before_check = before_check.BeforeCheck(self.main_ui)
-        self.main_ui.spinBox_ballsuccessin1.valueChanged.connect(lambda : self.hit_result("success_in"))
-        self.main_ui.spinBox_touchout1.valueChanged.connect(lambda : self.hit_result("touch_out"))
-        self.main_ui.spinBox_outarea1.valueChanged.connect(lambda : self.hit_result("out_area"))
-        self.main_ui.spinBox_motherballin1.valueChanged.connect(lambda : self.hit_result("mother_ball_in"))
-        self.main_ui.spinBox_touchball1.valueChanged.connect(lambda : self.hit_result("touch_ball"))
+        self.main_ui.spinBox_ballsuccessin1.valueChanged.connect(lambda: self.hit_result("success_in"))
+        self.main_ui.spinBox_touchout1.valueChanged.connect(lambda: self.hit_result("touch_out"))
+        self.main_ui.spinBox_outarea1.valueChanged.connect(lambda: self.hit_result("out_area"))
+        self.main_ui.spinBox_motherballin1.valueChanged.connect(lambda: self.hit_result("mother_ball_in"))
+        self.main_ui.spinBox_touchball1.valueChanged.connect(lambda: self.hit_result("touch_ball"))
 
+    # 记录每次的击球结果
     def hit_result(self, status):
         print("击球结果 =====>  " + status)
         self.status = status
 
+    # 点击进入比赛按钮槽函数
     @pyqtSlot()
     def on_toolButton_enter_match_clicked(self):
-        print("裁判员点击进入比赛，系统检查赛前准备工作完成情况...")
-
+        print("裁判员点击进入比赛，系统检查赛队伍信息录入...")
         if 1 == self.before_check.info_input_check():
             print("队伍信息输入完整！")
         else:
             QMessageBox.information(self, '信息提示对话框', "参赛队伍信息输入不完全，请裁判员重新检查！")
             print("参赛队伍信息输入不完全，请裁判员重新检查！")
             return
-
+        print("裁判员点击进入比赛，系统检查比赛队伍赛前准备情况...")
         if 1 == self.before_check.match_before_check():
             print("检查完成，请开始比赛！")
             # 存储比赛队伍信息
@@ -62,6 +63,7 @@ class MainWindow(QMainWindow):
             QMessageBox.information(self, '信息提示对话框', "赛前检查未完成，请裁判员重新检查！")
             print("赛前检查未完成，请裁判员重新检查！")
 
+    # 点击随机路径按钮槽函数，随机生成方案图片路径
     @pyqtSlot()
     def on_Button_random_image1_clicked(self):
         random_num = random.randint(0, 9)
@@ -69,6 +71,7 @@ class MainWindow(QMainWindow):
         print("随机生成方案图片路径： " + self.random_image_path)
         self.main_ui.lineEdit_image_path1.setText(self.random_image_path)
 
+    # 点击放置图片按钮槽函数
     @pyqtSlot()
     def on_Button_open_image1_clicked(self):
         if "" == self.random_image_path:
@@ -76,29 +79,35 @@ class MainWindow(QMainWindow):
             print("请先生成图片随机路径！")
             return
         jpg = QtGui.QPixmap(self.random_image_path)
+        # 适应label大小
         self.main_ui.label_show_image1.setScaledContents(True)
         self.main_ui.label_show_image1.setPixmap(jpg)
 
+    # 点击投影槽函数
     @pyqtSlot()
     def on_Button_projection1_clicked(self):
         if "" == self.random_image_path:
             QMessageBox.information(self, '信息提示对话框', "请先生成图片随机路径！")
             print("请先生成图片随机路径！")
             return
+        # 开启活动全屏窗口
         projection_win = ProjectionWindow(self.random_image_path)
         projection_win.paintEngine()
+        # 全屏
         projection_win.showFullScreen()
         projection_win.exec_()
 
+    # 点击计时开始按钮槽函数
     @pyqtSlot()
     def on_Button_match_start1_clicked(self):
         if self.remain_hit_times > 0:
-            print("============>第【" + str(5-self.remain_hit_times + 1) + "】次击球开始, 开始计时<===========")
+            print("============>第【%d】次击球开始, 开始计时<===========" % (5-self.remain_hit_times + 1))
             self.timer.start(1000)
         else:
             QMessageBox.information(self, '信息提示对话框', "击球次数已用完！")
             print("击球次数已用完！")
 
+    # 计时器
     def clock(self):
         if self.counter >= 0:
             self.main_ui.lcdNumber1.display(self.counter)
@@ -106,6 +115,7 @@ class MainWindow(QMainWindow):
         else:
             self.timer.stop()
 
+    # 计时器停止
     @pyqtSlot()
     def on_Button_match_stop1_clicked(self):
         # 每次点击结束代表一次击球次数结束
@@ -115,6 +125,7 @@ class MainWindow(QMainWindow):
         self.time_use = self.time_default - self.counter
         self.counter = self.time_default
 
+    # 单次击打结束，记录单词结果
     @pyqtSlot()
     def on_Button_match_once_stop1_clicked(self):
         # 剩余次数
@@ -122,8 +133,10 @@ class MainWindow(QMainWindow):
         self.main_ui.lineEdit_remain_times1.setText(str(self.remain_hit_times))
         # 记录本次击球的状态
         self.recoder[self.main_ui.comboBox_id.currentText()][str(5 - self.remain_hit_times) + "_status"] = self.status
-        self.recoder[self.main_ui.comboBox_id.currentText()][str(5 - self.remain_hit_times) + "_time_use"] = str(self.time_use)
-        self.recoder[self.main_ui.comboBox_id.currentText()][str(5 - self.remain_hit_times) + "_image_path"] = self.random_image_path
+        self.recoder[self.main_ui.comboBox_id.currentText()][str(5 - self.remain_hit_times) + "_time_use"] = \
+            str(self.time_use)
+        self.recoder[self.main_ui.comboBox_id.currentText()][str(5 - self.remain_hit_times) + "_image_path"] = \
+            self.random_image_path
         if str(5 - self.remain_hit_times) + "_repair" not in self.recoder[self.main_ui.comboBox_id.currentText()]:
             self.recoder[self.main_ui.comboBox_id.currentText()][str(5 - self.remain_hit_times) + "_repair"] = "no"
         print(str(self.recoder))
@@ -132,6 +145,7 @@ class MainWindow(QMainWindow):
               5 - self.remain_hit_times, str(self.main_ui.comboBox_id.currentText()), self.status, self.time_use,
               self.random_image_path, repair_result))
 
+    # 点击维修按钮槽函数
     @pyqtSlot()
     def on_Button_device_repair1_clicked(self):
         print("队伍申请维修，比赛暂停，计时器重置")
@@ -146,16 +160,20 @@ class MainWindow(QMainWindow):
             QMessageBox.information(self, '信息提示对话框', "维修次数已用完！")
             print("维修次数已用完！")
 
+    # 计分规则
     @pyqtSlot()
     def on_Button_compute_points1_clicked(self):
         print(">>>>>开始计算分数<<<<<<<")
         # todo 计算公式
+        time_use = 0
+        repair_time = 0
 
         self.score = 100
         print("参赛队伍：【%s】 ==> 最后得分：【%d】" % (self.main_ui.lineEdit_name.text(), self.score))
         self.recoder[self.main_ui.comboBox_id.currentText()]["score"] = str(self.score)
         self.main_ui.lineEdit_score1.setText(str(self.score))
 
+    # 保存比赛结果
     @pyqtSlot()
     def on_Button_save1_clicked(self):
         print("开始导出本队比赛结果,请稍等...")
@@ -176,6 +194,7 @@ class ProjectionWindow(QDialog):
         self.projection_ui = image_projection.Ui_Form()
         self.projection_ui.setupUi(self)
 
+    # 将图片以背景图片全屏显示
     def paintEvent(self, event):
         painter = QPainter(self)
         painter.drawRect(self.rect())
