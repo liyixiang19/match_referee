@@ -3,10 +3,10 @@
 
 
 ## 实现的功能
-+ 1、台球击球的赛前检查
-+ 2、实现了定点击球逻辑
++ 1、台球击球的赛前检查，包括队伍信息录入，赛前设备状态检查等
++ 2、实现了定点击球和顺序击球逻辑， 动态击球逻辑待完善
 + 3、击球方案从方案图片库中随机挑选，通过投影放置台球
-+ 4、可以点击保存，导出比赛结果的excel文件
++ 4、比赛中裁判记录击球结果，可以点击保存，导出比赛结果的excel文件
 
 ### 操作流程
 + 1、裁判员输入参赛队伍信息，检查参赛机器状态，并签字确认，进入比赛
@@ -17,4 +17,7 @@
 + 6、可导出excel
 
 ###
-ps： 运行前请安装对应的requirements包
+ps： 
++ 运行前请安装对应的requirements中的python包
++ 方案图片请放入”match_referee\stable_ball_picture"、“match_referee\order_ball_picture”、“match_referee\dynamic_ball_picture"
++ 比赛结果excel放入"match_referee\excel_result"中，按照时间后缀命名
