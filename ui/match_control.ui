@@ -197,6 +197,19 @@
        <string>单次击球结束</string>
       </property>
      </widget>
+     <widget class="QLCDNumber" name="lcdNumber_repair_timer1">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>242</y>
+        <width>131</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="intValue" stdset="0">
+       <number>300</number>
+      </property>
+     </widget>
     </widget>
     <widget class="QGroupBox" name="groupBox_2">
      <property name="geometry">

@@ -13,10 +13,15 @@ from excel_save import switch_excel
 class MainWindow(QMainWindow):
     def __init__(self):
         QMainWindow.__init__(self)
-        self.timer = QTimer(self)
-        self.timer.timeout.connect(self.clock)
         self.main_ui = match_control.Ui_match_control()
         self.main_ui.setupUi(self)
+        # 比赛计时器
+        self.timer = QTimer(self)
+        self.timer.timeout.connect(self.clock)
+        # 维修计时器
+        self.timer_repair = QTimer(self)
+        self.timer_repair.timeout.connect(self.clock_repair)
+
         # 初始值
         self.random_image_path = ""
         self.repair_times = 2
@@ -24,6 +29,8 @@ class MainWindow(QMainWindow):
         self.time_use = 0
         self.time_default = 60
         self.counter = 60
+        self.counter_repair = 300
+        self.time_repair_default = 300
         self.score = 0
         self.recoder = {}
         self.status = ""
@@ -100,6 +107,11 @@ class MainWindow(QMainWindow):
     # 点击计时开始按钮槽函数
     @pyqtSlot()
     def on_Button_match_start1_clicked(self):
+        # 重置维修计时器
+        self.timer_repair.stop()
+        self.counter_repair = self.time_repair_default
+        self.timer_repair.stop()
+
         if self.remain_hit_times > 0:
             print("============>第【%d】次击球开始, 开始计时<===========" % (5-self.remain_hit_times + 1))
             self.timer.start(1000)
@@ -114,6 +126,16 @@ class MainWindow(QMainWindow):
             self.counter -= 1
         else:
             self.timer.stop()
+
+    # 维修计时器
+    def clock_repair(self):
+        if self.counter_repair >= 0:
+            self.main_ui.lcdNumber_repair_timer1.display(self.counter_repair)
+            self.counter_repair -= 1
+        else:
+            self.timer.stop()
+            QMessageBox.information(self, '信息提示对话框', "维修时间用完！")
+            print("维修时间用完！")
 
     # 计时器停止
     @pyqtSlot()
@@ -148,7 +170,8 @@ class MainWindow(QMainWindow):
     # 点击维修按钮槽函数
     @pyqtSlot()
     def on_Button_device_repair1_clicked(self):
-        print("队伍申请维修，比赛暂停，计时器重置")
+        print("队伍申请维修，比赛暂停，计时器重置，维修计时器开始计时！")
+        self.timer_repair.start(1000)
         self.main_ui.lcdNumber1.display(self.time_default)
         if self.repair_times > 0:
             self.repair_times -= 1
